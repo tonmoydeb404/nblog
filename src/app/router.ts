@@ -1,10 +1,10 @@
 import { Router } from "express";
-import adminRouter from "../routers/admin";
 import blogRouter from "../routers/blog";
+import dashboardRouter from "../routers/dashboard";
 
 const router = Router();
 
+router.use("/dashboard", dashboardRouter);
 router.use("/", blogRouter);
-router.use("/admin", adminRouter);
 
 export default router;

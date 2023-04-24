@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body class="bg-light min-vh-100">
+  <%- include('./partials/navbar') %>
+  <div class="container col-md-8 col-xl-6">
+    <div class="mt-5">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Blog List</h2>
+        <a href="/dashboard/create" class="btn btn-success">create new</a>
+      </div>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>
+              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
+              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>
+              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
+              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td>
+              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
+              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

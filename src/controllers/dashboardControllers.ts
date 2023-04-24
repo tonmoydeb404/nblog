@@ -1,7 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 
-export const getPosts = (req: Request, res: Response, next: NextFunction) => {
-  res.send("get all posts");
+export const getPosts = async (
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
+  res.render("dashboard/home.ejs");
 };
 
 export const getCreatePost = (
@@ -9,7 +13,7 @@ export const getCreatePost = (
   res: Response,
   next: NextFunction
 ) => {
-  res.send("get create post page");
+  res.render("dashboard/create.ejs");
 };
 export const createPost = (req: Request, res: Response, next: NextFunction) => {
   res.send("create post");
@@ -20,12 +24,19 @@ export const getUpdatePost = (
   res: Response,
   next: NextFunction
 ) => {
-  res.send("get update post page");
+  res.render("dashboard/update.ejs");
 };
 export const updatePost = (req: Request, res: Response, next: NextFunction) => {
   res.send("update post");
 };
 
+export const getDeletePost = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  res.render("dashboard/delete.ejs");
+};
 export const deletePost = (req: Request, res: Response, next: NextFunction) => {
   res.send("delete post");
 };
