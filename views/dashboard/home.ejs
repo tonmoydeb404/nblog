@@ -22,30 +22,20 @@
           </tr>
         </thead>
         <tbody>
+          <% posts.forEach((post, index) => { %>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
+            <th scope="row"><%= index + 1 %></th>
             <td>
-              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
-              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
+              <a href="/<%- post.id %>" target="_blank" class="text-decoration-none">
+                <%= post.title %>
+              </a>
+            </td>
+            <td>
+              <a href="/dashboard/update/<%- post.id %>" class="btn btn-warning btn-sm">edit</a>
+              <a href="/dashboard/delete/<%- post.id %>" class="btn btn-danger btn-sm">delete</a>
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>
-              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
-              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>
-              <a href="/dashboard/update/id" class="btn btn-warning btn-sm">edit</a>
-              <a href="/dashboard/delete/id" class="btn btn-danger btn-sm">delete</a>
-            </td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
