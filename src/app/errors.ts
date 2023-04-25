@@ -15,11 +15,19 @@ export const defaultErrorHandler = (
   res: Response,
   _next: NextFunction
 ) => {
-  console.log(error);
+  console.log(error.message);
 
   if (error.status) {
-    return res.status(error.status).send(error.message);
+    res.status(error.status);
+    res.locals.status = error.status;
+    res.locals.text = error.message;
+    res.locals.title = `${error.message} - Nblog`;
+  } else {
+    res.status(500);
+    res.locals.title = "Server Error - Nblog";
+    res.locals.status = 500;
+    res.locals.text = "something wents to wrong";
   }
 
-  return res.status(500).send("something wents to wrong");
+  res.render("error.ejs");
 };

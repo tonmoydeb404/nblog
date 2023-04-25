@@ -5,6 +5,6 @@ import formatResponse from "../middlewares/formatResponse";
 const blogRouter = Router();
 
 blogRouter.get("/", formatResponse("Home"), getBlogs);
-blogRouter.get("/:id", formatResponse("Post"), getBlog);
+blogRouter.get("/:slug", formatResponse("Post"), getBlog);
 
 export default blogRouter;

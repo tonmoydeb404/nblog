@@ -8,10 +8,10 @@
 <body class="bg-light">
   <%- include("./partials/navbar") %>
   <div class="container col-md-8 col-xl-6">
-    <div class="d-flex flex-column gap-3 py-5">
+    <div class="d-flex flex-column gap-4 py-5">
       <% posts.forEach(post => { %>
       <%- include('./partials/post-card', {title: post.title, description: post.description,
-        path: `/${post.id}`}) %>
+        path: `/${post.slug}`}) %>
       <% }) %>
     </div>
   </div>
