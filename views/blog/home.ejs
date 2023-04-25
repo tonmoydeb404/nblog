@@ -8,21 +8,12 @@
 <body class="bg-light">
   <%- include("./partials/navbar") %>
   <div class="container col-md-8 col-xl-6">
-
-    <div class="d-flex flex-column gap-3 mt-5">
-
-      <%- include('./partials/post-card', {title: "Hello world", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea autem vero ipsam sint dicta, eaque ipsa totam tempora enim! Itaque molestiae ex, error officia quia commodi odit repellat qui!",
-      path: "#"}) %>
-      <%- include('./partials/post-card', {title: "Hello world", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea autem vero ipsam sint dicta, eaque ipsa totam tempora enim! Itaque molestiae ex, error officia quia commodi odit repellat qui!",
-      path: "#"}) %>
-      <%- include('./partials/post-card', {title: "Hello world", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea autem vero ipsam sint dicta, eaque ipsa totam tempora enim! Itaque molestiae ex, error officia quia commodi odit repellat qui!",
-      path: "#"}) %>
-      <%- include('./partials/post-card', {title: "Hello world", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea autem vero ipsam sint dicta, eaque ipsa totam tempora enim! Itaque molestiae ex, error officia quia commodi odit repellat qui!",
-      path: "#"}) %>
-
+    <div class="d-flex flex-column gap-3 py-5">
+      <% posts.forEach(post => { %>
+      <%- include('./partials/post-card', {title: post.title, description: post.description,
+        path: `/${post.id}`}) %>
+      <% }) %>
     </div>
-
-
   </div>
 </body>
 
