@@ -4,9 +4,6 @@
 <head>
   <%- include('../partials/head') %>
 
-  <!-- Include stylesheet -->
-  <link href="/css/quill.snow.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-light min-vh-100">
@@ -16,43 +13,11 @@
       <div class="d-flex justify-content-between align-items-center">
         <h4>Create New Post</h4>
       </div>
-
-      <form id="createForm" method="post" action="/dashboard/create" class="d-flex flex-column gap-3 mt-3">
-        <div>
-          <label for="title" class="form-label">Title</label>
-          <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title here">
-        </div>
-        <div>
-          <label for="description" class="form-label">Description</label>
-          <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter post description here"></textarea>
-        </div>
-        <div>
-          <label for="content" class="form-label">Content</label>
-          <input name="content" class="d-none">
-          <div id="editor" style="min-height: 200px;"></div>
-        </div>
-        <div class="d-flex gap-1 align-items-center mt-2">
-          <button type="submit" class="btn btn-success">Create</button>
-          <a href="/dashboard" class="btn btn-warning">Cancel</a>
-        </div>
-      </form>
+      <%- include('./partials/form', {post: {}, path: `/dashboard/create/`}) %>
     </div>
   </div>
 
-  <!-- Include the Quill library -->
-  <script src="/js/quill.js"></script>
-  <!-- Initialize Quill editor -->
-  <script>
-    var quill = new Quill('#editor', {
-      theme: 'snow'
-    });
 
-    document.getElementById('createForm').addEventListener("submit", (e) => {
-      const content = document.querySelector('input[name="content"]');
-      content.value = quill.root.innerHTML
-      console.log(e);
-    })
-  </script>
 </body>
 
 </html>
