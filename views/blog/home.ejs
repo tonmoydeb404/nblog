@@ -9,7 +9,7 @@
   <%- include("./partials/navbar") %>
   <div class="container col-md-8 col-xl-6">
     <div class="d-flex flex-column gap-4 py-5">
-      <% posts.forEach(post => { %>
+      <% data.posts.forEach(post => { %>
       <%- include('./partials/post-card', {title: post.title, description: post.description,
         path: `/${post.slug}`}) %>
       <% }) %>

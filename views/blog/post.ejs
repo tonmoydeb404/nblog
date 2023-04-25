@@ -9,13 +9,13 @@
   <%- include("./partials/navbar") %>
   <div class="container col-md-8 col-xl-6">
     <div class="py-5">
-      <h1 class="h2"><%= post.title %></h1>
-      <span class="text-muted fs-5"><%= new Date(post.updatedAt).toLocaleString() %></span>
+      <h1 class="h2"><%= data.title %></h1>
+      <span class="text-muted fs-5"><%= new Date(data.updatedAt).toLocaleString() %></span>
       <div class="alert alert-warning mt-2">
-        <%= post.description %>
+        <%= data.description %>
       </div>
       <div style="white-space: pre-line;">
-        <%- post.content %>
+        <%- data.content %>
       </div>
     </div>
   </div>

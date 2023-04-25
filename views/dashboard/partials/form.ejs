@@ -1,19 +1,28 @@
 <!-- Include stylesheet -->
 <link href="/css/quill.snow.css" rel="stylesheet">
 
-<form id="form" action="<%- path %>" class="d-flex flex-column gap-3 mt-3" method="post">
+<form id="form" action="<%- path %>" class="d-flex flex-column gap-3 mt-3 needs-validation" method="post" novalidate>
   <div>
     <label for="title" class="form-label">Title</label>
-    <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title here" value="<%- post.title %>">
+    <input type="text" name="title" class="form-control <% if (errors?.title) { %>is-invalid<% } %>" id="title" placeholder="Enter post title here" value="<%- post.title %>" required>
+    <% if (errors?.title) { %>
+    <div class="invalid-feedback"><%= errors.title.msg %></div>
+    <% } %>
   </div>
   <div>
     <label for="description" class="form-label">Description</label>
-    <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter post description here"><%- post.description %></textarea>
+    <textarea type="text" name="description" class="form-control <% if (errors?.description) { %>is-invalid<% } %>" id="description" placeholder="Enter post description here"><%- post.description %></textarea>
+    <% if (errors?.description) { %>
+    <div class="invalid-feedback"><%= errors.description.msg %></div>
+    <% } %>
   </div>
   <div>
     <label for="content" class="form-label">Content</label>
-    <input name="content" class="d-none">
+    <input name="content" class="d-none <% if (errors?.content) { %>is-invalid<% } %>">
     <div id="editor" style="height: 200px;"><%- post.content %></div>
+    <% if (errors?.content) { %>
+    <div class="invalid-feedback"><%= errors.content.msg %></div>
+    <% } %>
   </div>
   <div class="d-flex gap-1 align-items-center mt-2">
     <button type="submit" class="btn btn-success">Save</button>
