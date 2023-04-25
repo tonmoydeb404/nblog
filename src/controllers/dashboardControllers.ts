@@ -17,7 +17,7 @@ export const getCreatePost = (
 ) => {
   res.render("dashboard/create.ejs");
 };
-export const createPost = asyncWrapper(async (req, res, next) => {
+export const createPost = asyncWrapper(async (req, res, _next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
@@ -29,16 +29,24 @@ export const createPost = asyncWrapper(async (req, res, next) => {
   res.redirect("/dashboard");
 });
 
-export const getUpdatePost = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  res.render("dashboard/update.ejs");
-};
-export const updatePost = (req: Request, res: Response, next: NextFunction) => {
-  res.send("update post");
-};
+export const getUpdatePost = asyncWrapper(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    const id = req.params.id;
+    const post = await Post.findOne({ _id: id });
+    res.locals.post = post;
+    res.render("dashboard/update.ejs");
+  }
+);
+export const updatePost = asyncWrapper(
+  async (req: Request, res: Response, next: NextFunction) => {
+    await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      content: req.body.content,
+      description: req.body.description,
+    });
+    res.redirect("/dashboard");
+  }
+);
 
 export const getDeletePost = (
   req: Request,

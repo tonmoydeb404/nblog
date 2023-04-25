@@ -13,31 +13,33 @@
         <h2>Blog List</h2>
         <a href="/dashboard/create" class="btn btn-success">create new</a>
       </div>
-      <table class="table table-striped mt-4">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% posts.forEach((post, index) => { %>
-          <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <td>
-              <a href="/<%- post.id %>" target="_blank" class="text-decoration-none">
-                <%= post.title %>
-              </a>
-            </td>
-            <td>
-              <a href="/dashboard/update/<%- post.id %>" class="btn btn-warning btn-sm">edit</a>
-              <a href="/dashboard/delete/<%- post.id %>" class="btn btn-danger btn-sm">delete</a>
-            </td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+      <div class="table-responsive mt-4">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% posts.forEach((post, index) => { %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td>
+                <a href="/<%- post.id %>" target="_blank" class="text-decoration-none">
+                  <%= post.title %>
+                </a>
+              </td>
+              <td>
+                <a href="/dashboard/update/<%- post.id %>" class="btn btn-warning btn-sm">edit</a>
+                <a href="/dashboard/delete/<%- post.id %>" class="btn btn-danger btn-sm">delete</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </body>

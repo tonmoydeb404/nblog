@@ -13,18 +13,18 @@
         <h4>update Post</h4>
       </div>
 
-      <form class="d-flex flex-column gap-3 mt-3">
+      <form action="/dashboard/update/<%- post.id %>" class="d-flex flex-column gap-3 mt-3" method="post">
         <div>
           <label for="title" class="form-label">Title</label>
-          <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title here">
+          <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title here" value="<%- post.title %>">
         </div>
         <div>
           <label for="description" class="form-label">Description</label>
-          <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter post description here"></textarea>
+          <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter post description here"><%- post.description %></textarea>
         </div>
         <div>
           <label for="content" class="form-label">Content</label>
-          <textarea type="text" name="content" class="form-control" id="content" placeholder="Enter post content here" rows="7"></textarea>
+          <textarea type="text" name="content" class="form-control" id="content" placeholder="Enter post content here" rows="7"><%- post.content %></textarea>
         </div>
         <div class="d-flex gap-1 align-items-center mt-2">
           <button type="submit" class="btn btn-success">Update</button>

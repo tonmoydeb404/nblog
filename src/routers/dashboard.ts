@@ -13,7 +13,7 @@ const dashboardRouter = Router();
 
 dashboardRouter.get("/", getPosts);
 dashboardRouter.route("/create").get(getCreatePost).post(createPost);
-dashboardRouter.route("/update/:id").get(getUpdatePost).put(updatePost);
+dashboardRouter.route("/update/:id").get(getUpdatePost).post(updatePost);
 dashboardRouter.route("/delete/:id").get(getDeletePost).delete(deletePost);
 
 export default dashboardRouter;
