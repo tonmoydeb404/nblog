@@ -3,7 +3,6 @@ import {
   createPost,
   deletePost,
   getCreatePost,
-  getDeletePost,
   getPosts,
   getUpdatePost,
   updatePost,
@@ -14,6 +13,6 @@ const dashboardRouter = Router();
 dashboardRouter.get("/", getPosts);
 dashboardRouter.route("/create").get(getCreatePost).post(createPost);
 dashboardRouter.route("/update/:id").get(getUpdatePost).post(updatePost);
-dashboardRouter.route("/delete/:id").get(getDeletePost).delete(deletePost);
+dashboardRouter.route("/delete/:id").get(deletePost);
 
 export default dashboardRouter;

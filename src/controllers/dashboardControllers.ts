@@ -48,13 +48,7 @@ export const updatePost = asyncWrapper(
   }
 );
 
-export const getDeletePost = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  res.render("dashboard/delete.ejs");
-};
-export const deletePost = (req: Request, res: Response, next: NextFunction) => {
-  res.send("delete post");
-};
+export const deletePost = asyncWrapper(async (req, res) => {
+  await Post.findByIdAndDelete(req.params.id);
+  res.redirect("/dashboard");
+});
