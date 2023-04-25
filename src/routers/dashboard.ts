@@ -7,12 +7,19 @@ import {
   getUpdatePost,
   updatePost,
 } from "../controllers/dashboardControllers";
+import formatResponse from "../middlewares/formatResponse";
 
 const dashboardRouter = Router();
 
-dashboardRouter.get("/", getPosts);
-dashboardRouter.route("/create").get(getCreatePost).post(createPost);
-dashboardRouter.route("/update/:id").get(getUpdatePost).post(updatePost);
+dashboardRouter.route("/").get(formatResponse("Dashboard"), getPosts);
+dashboardRouter
+  .route("/create")
+  .get(formatResponse("Create Post"), getCreatePost)
+  .post(createPost);
+dashboardRouter
+  .route("/update/:id")
+  .get(formatResponse("Update Post"), getUpdatePost)
+  .post(updatePost);
 dashboardRouter.route("/delete/:id").get(deletePost);
 
 export default dashboardRouter;

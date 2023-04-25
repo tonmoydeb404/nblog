@@ -4,7 +4,7 @@ import asyncWrapper from "../utils/asyncWrapper";
 
 export const getPosts = asyncWrapper(
   async (_req: Request, res: Response, _next: NextFunction) => {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).sort({ createdAt: -1 });
     res.locals.posts = posts;
     res.render("dashboard/home.ejs");
   }

@@ -2,7 +2,7 @@ import { Post } from "../models/Post";
 import asyncWrapper from "../utils/asyncWrapper";
 
 export const getBlogs = asyncWrapper(async (_req, res) => {
-  const posts = await Post.find({});
+  const posts = await Post.find({}).sort({ createdAt: -1 });
   res.locals.posts = posts;
   res.render("blog/home.ejs");
 });
