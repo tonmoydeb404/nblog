@@ -1,23 +1,15 @@
 import { Schema, model } from "mongoose";
 import { SluggerOptions, plugin } from "mongoose-slugger-plugin";
 
-export const postSchema = new Schema(
+export const categorySchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "post title is required"],
+      required: [true, "category title is required"],
     },
     description: {
       type: String,
-      required: [true, "post description is required"],
-    },
-    content: {
-      type: String,
-      required: [true, "post content is required"],
-    },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: "category",
+      required: [true, "category description is required"],
     },
     slug: {
       type: String,
@@ -29,7 +21,10 @@ export const postSchema = new Schema(
 );
 
 // slug index
-postSchema.index({ title: 1, slug: 1 }, { name: "title_slug", unique: true });
+categorySchema.index(
+  { title: 1, slug: 1 },
+  { name: "title_slug", unique: true }
+);
 // slugger configuration
 const sluggerOptions = new SluggerOptions({
   slugPath: "slug",
@@ -38,6 +33,6 @@ const sluggerOptions = new SluggerOptions({
   index: "title_slug",
 });
 // add the slugger plugin
-postSchema.plugin(plugin, sluggerOptions);
+categorySchema.plugin(plugin, sluggerOptions);
 
-export const Post = model("post", postSchema);
+export const Category = model("category", categorySchema);

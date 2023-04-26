@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-  <%- include('../partials/head') %>
+  <%- include('../../partials/head') %>
 </head>
 
 <body class="bg-light min-vh-100">
-  <%- include('./partials/navbar') %>
+  <%- include('../partials/navbar') %>
   <div class="container col-md-8 col-xl-6">
     <div class="py-5">
       <div class="d-flex justify-content-between align-items-center">
-        <h4>update Post</h4>
+        <h4>Update Post</h4>
       </div>
-      <%- include('./partials/form', {post: data, path: `/dashboard/update/${data.id}`}) %>
+      <%- include('../partials/post-form', {post: data.post, categories: data.categories, path: `/dashboard/posts/update/${data.post.id}`}) %>
     </div>
   </div>
 

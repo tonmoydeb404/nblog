@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../partials/head') %>
+
+</head>
+
+<body class="bg-light min-vh-100">
+  <%- include('../partials/navbar') %>
+  <div class="container col-md-8 col-xl-6">
+    <div class="py-5">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Create New Category</h4>
+      </div>
+      <%- include('../partials/category-form', {category: data, path: `/dashboard/categories/create/`, errors}) %>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

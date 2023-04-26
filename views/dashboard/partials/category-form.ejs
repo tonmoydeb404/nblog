@@ -1,0 +1,21 @@
+<form id="form" action="<%- path %>" class="d-flex flex-column gap-3 mt-3 needs-validation" method="post" novalidate>
+  <div>
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control <% if (errors?.title) { %>is-invalid<% } %>" id="title" placeholder="Enter Category title here" value="<%- category.title %>" required>
+    <% if (errors?.title) { %>
+    <div class="invalid-feedback"><%= errors.title.msg %></div>
+    <% } %>
+  </div>
+  <div>
+    <label for="description" class="form-label">Description</label>
+    <textarea type="text" name="description" rows="5" class="form-control <% if (errors?.description) { %>is-invalid<% } %>" id="description" placeholder="Enter Category description here"><%- category.description %></textarea>
+    <% if (errors?.description) { %>
+    <div class="invalid-feedback"><%= errors.description.msg %></div>
+    <% } %>
+  </div>
+
+  <div class="d-flex gap-1 align-items-center mt-2">
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/dashboard/categories" class="btn btn-warning">Cancel</a>
+  </div>
+</form>

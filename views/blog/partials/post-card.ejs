@@ -1,9 +1,21 @@
 <div class="card bg-transparent border-0 p-0">
-  <div class="card-body">
-    <h4 class="card-title">
-      <a href="<%= path %>" class="card-title text-decoration-none"><%= title %></a>
+  <div class="card-body px-1">
+    <h4 class="card-title mb-1">
+      <a href="/<%= post.slug %>" class="card-title text-decoration-none"><%= post.title %></a>
     </h4>
-    <p class="card-text"><%= description %></p>
-    <a href="<%= path %>" class="card-link">Read more</a>
+    <div class="d-flex align-item-center gap-2 mb-3">
+
+      <% if (post.category) { %>
+      <a href="/<%= post.category.slug %>" class="text-decoration-none text-success fw-bold"><%= post.category.title %></a>
+      <% } else { %>
+      <a href="/uncategorized" class="text-decoration-none text-success fw-bold">Uncategorized</a>
+      <% }%>
+      |
+      <span>
+        <%= new Date(post.createdAt).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %>
+      </span>
+    </div>
+    <p class="card-text"><%= post.description %></p>
+    <a href="/<%= post.slug %>" class="card-link">Read more</a>
   </div>
 </div>
