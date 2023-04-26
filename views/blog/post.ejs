@@ -10,8 +10,19 @@
   <div class="container col-md-8 col-xl-6">
     <div class="py-5">
       <h1 class="h2"><%= data.title %></h1>
-      <span class="text-muted fs-5"><%= new Date(data.updatedAt).toLocaleString() %></span>
-      <div class="alert alert-warning mt-2">
+      <div class="d-flex align-item-center gap-2 mb-3">
+
+        <% if (data.category) { %>
+        <a href="/<%= data.category.slug %>" class="text-decoration-none text-success fw-bold"><%= data.category.title %></a>
+        <% } else { %>
+        <a href="/uncategorized" class="text-decoration-none text-success fw-bold">Uncategorized</a>
+        <% }%>
+        |
+        <span>
+          <%= new Date(data.createdAt).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %>
+        </span>
+      </div>
+      <div class="alert alert-warning mt-2 mb-2">
         <%= data.description %>
       </div>
       <div style="white-space: pre-line;">

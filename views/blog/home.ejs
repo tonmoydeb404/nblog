@@ -10,7 +10,7 @@
   <div class="container col-md-8 col-xl-6">
     <div class="d-flex flex-column gap-4 py-5">
       <% data.posts.forEach(post => { %>
-      <%- include('./partials/post-card', {post:post}) %>
+      <%- include('./partials/post-card', {post:post, category: post.category}) %>
       <% }) %>
     </div>
   </div>

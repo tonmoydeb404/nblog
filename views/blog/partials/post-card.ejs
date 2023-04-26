@@ -5,8 +5,8 @@
     </h4>
     <div class="d-flex align-item-center gap-2 mb-3">
 
-      <% if (post.category) { %>
-      <a href="/<%= post.category.slug %>" class="text-decoration-none text-success fw-bold"><%= post.category.title %></a>
+      <% if (category) { %>
+      <a href="/<%= category.slug %>" class="text-decoration-none text-success fw-bold"><%= category.title %></a>
       <% } else { %>
       <a href="/uncategorized" class="text-decoration-none text-success fw-bold">Uncategorized</a>
       <% }%>
