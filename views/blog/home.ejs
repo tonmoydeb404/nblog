@@ -7,8 +7,12 @@
 
 <body class="bg-light">
   <%- include("./partials/navbar") %>
-  <div class="container col-md-8 col-xl-6">
-    <div class="d-flex flex-column gap-4 py-5">
+  <div class="container col-md-8 col-xl-6 pb-5 pt-3">
+    <form action="/search" method="get" class="d-flex align-items-center gap-2">
+      <input type="search" class="form-control" name="q" placeholder="search here">
+      <button class="btn btn-success">Search</button>
+    </form>
+    <div class="d-flex flex-column gap-4 mt-4">
       <% data.posts.forEach(post => { %>
       <%- include('./partials/post-card', {post:post, category: post.category}) %>
       <% }) %>
