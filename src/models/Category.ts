@@ -1,7 +1,15 @@
 import { Schema, model } from "mongoose";
 import { SluggerOptions, plugin } from "mongoose-slugger-plugin";
+import { Post } from "./Post";
 
-export const categorySchema = new Schema(
+type CategoryType = {
+  _id: Schema.Types.ObjectId;
+  title: string;
+  description: string;
+  slug: string;
+};
+
+export const categorySchema = new Schema<CategoryType>(
   {
     title: {
       type: String,
@@ -34,5 +42,14 @@ const sluggerOptions = new SluggerOptions({
 });
 // add the slugger plugin
 categorySchema.plugin(plugin, sluggerOptions);
+
+// middleware
+categorySchema.post("findOneAndDelete", async (doc) => {
+  await Post.updateMany(
+    { category: doc._id },
+    { $unset: { category: 1 } },
+    { multi: true }
+  );
+});
 
 export const Category = model("category", categorySchema);
